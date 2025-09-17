@@ -1,8 +1,12 @@
 package com.example.madt_lab2;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spnChoice;
+    private EditText editText;
+    private TextView txtViewRes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         spnChoice = findViewById(R.id.spinner);
+        editText = findViewById(R.id.editText);
+        txtViewRes = findViewById(R.id.txtViewRes);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.count_options, android.R.layout.simple_spinner_item
@@ -37,6 +45,27 @@ public class MainActivity extends AppCompatActivity {
         spnChoice.setAdapter(adapter);
     }
 
+    public void Count(View view) {
+        String input = editText.getText().toString().trim();
+
+        if (input.isEmpty()) {
+            Toast.makeText(this, "Enter some text", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        TextCounting counter = new TextCounting();
+
+        String choice = spnChoice.getSelectedItem().toString();
+        int result;
+
+        if (choice.equals("Words")) {
+            result = counter.countWords(input);
+        } else {
+            result = counter.countCharacters(input);
+        }
+
+        txtViewRes.setText("Count: " + result);
+    }
 }
 
 

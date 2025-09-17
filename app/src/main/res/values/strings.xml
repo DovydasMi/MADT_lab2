@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MADT_lab2</string>
+    <string name="count">Count</string>
+    <string name="enter_text_here">Enter text here</string>
+    <string name="answer_will_appear_here">Answer will appear here</string>
 
     <string-array name="count_options">
         <item>Words</item>
