@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Spinner spnChoice;
@@ -58,13 +59,19 @@ public class MainActivity extends AppCompatActivity {
         String choice = spnChoice.getSelectedItem().toString();
         int result;
 
-        if (choice.equals("Words")) {
+        if (choice.equals(getString(R.string.words))) {
             result = counter.countWords(input);
-        } else {
+        } else if (choice.equals(getString(R.string.characters))) {
             result = counter.countCharacters(input);
+        } else if (choice.equals(getString(R.string.sentences))) {
+            result = counter.countSentences(input);
+        } else if (choice.equals(getString(R.string.numbers))) {
+            result = counter.countNumbers(input);
+        } else {
+            result = 0;
         }
 
-        txtViewRes.setText("Count: " + result);
+        txtViewRes.setText(getString(R.string.count_string, result));
     }
 }
 

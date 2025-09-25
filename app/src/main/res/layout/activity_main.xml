@@ -46,9 +46,10 @@
 
     <TextView
         android:id="@+id/txtViewRes"
-        android:layout_width="161dp"
-        android:layout_height="31dp"
+        android:layout_width="277dp"
+        android:layout_height="45dp"
         android:hint="@string/answer_will_appear_here"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
